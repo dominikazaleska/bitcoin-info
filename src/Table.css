@@ -1,0 +1,21 @@
+table, th, td {
+    border: 1px solid black;
+    text-align: left;
+  	width: 70%; 
+  	border-collapse: collapse; 
+  	margin-left: auto;
+  	margin-right: auto;
+}
+
+/*td:first-child {
+  width: 1em;
+}*/
+
+ul {
+	list-style: none;
+	padding-left: 0px;
+}
+
+li {
+	margin-left: 0px;
+}
