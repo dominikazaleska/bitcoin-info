@@ -34,7 +34,7 @@ class App extends Component {
     if(this.state.input === '' || this.state.searched === false ) {
       return (
         <div className="App">
-            <h1 className=''>Bitcoin Info</h1>
+            <h1 className='avenir mid-gray'>Bitcoin Info</h1>
             <SearchBox 
               onInputChange={this.onInputChange}
               onButtonSubmit={this.onButtonSubmit}
@@ -44,7 +44,7 @@ class App extends Component {
     } else {
       return (
         <div className="App">
-            <h1 className=''>Bitcoin Info</h1>
+            <h1 className='avenir mid-gray'>Bitcoin Info</h1>
             <SearchBox 
               onInputChange={this.onInputChange}
               onButtonSubmit={this.onButtonSubmit}

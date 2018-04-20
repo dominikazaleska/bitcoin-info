@@ -3,7 +3,12 @@
   display: block;
 }
 
+h1 {
+  font-weight: 500;
+}
+
 .Table {
+	width: 100%;
 }
 
 

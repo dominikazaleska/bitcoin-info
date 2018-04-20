@@ -2,11 +2,11 @@ import React from 'react';
 
 const SearchBox = ({ onInputChange, onButtonSubmit }) => {
 	return (
-		<div className='pa2'>
-			<input className='f4 pa2 w-70 center' type='text' onChange={onInputChange}/>
+		<div className='pa10'>
+			<input className='f4 pa3 w-50 center bn bg-washed-blue truncated' type='text' onChange={onInputChange}/>
 			<button 
-				className='w-30 grow f4 link ph3 pv2 dib white bg-light-purple'
-				onClick={onButtonSubmit}>Detect</button>								
+				className='w-30 f4 link ph3 pv3 dib white bg-blue b--none'
+				onClick={onButtonSubmit}>Check</button>								
 		</div>
 	);
 }
