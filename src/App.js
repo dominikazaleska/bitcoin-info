@@ -10,7 +10,6 @@ class App extends Component {
       input: '',
       data: {},
       correct_input: false,
-      if_correct_text: "",
       submitted: false
     }
   }
@@ -27,7 +26,6 @@ class App extends Component {
     let string = String(input) || '';
     let cleaned = string.replace(/^[\s\xa0]+|[\s\xa0]+$/g, '');
     if(cleaned.length !== 64) {
-      this.setState({if_correct_text: "invalid input"});
       this.state.correct_input = false;
       return this.state.correct_input;
     }
@@ -52,7 +50,7 @@ class App extends Component {
   }
 
   render() {
-    let content
+    let content;
     if (this.state.submitted===true && this.state.correct_input===true) {
       content = (
         <Table data={this.state.data} />
