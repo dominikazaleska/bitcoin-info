@@ -8,30 +8,61 @@ class App extends Component {
     super();
     this.state = {
       input: '',
-      searched: false,
-      data: {}
+      data: {},
+      correct_input: false,
+      if_correct_text: "",
+      submitted: false
     }
   }
 
   displayData = (data) => {
-    console.log("Data: ", data);
-    this.setState({data: data})
+    this.setState({data: data});
   }
 
   onInputChange = (event) => {
     this.setState({input: event.target.value});
   }
 
+  checkAddress = (input) => {
+    let string = String(input) || '';
+    let cleaned = string.replace(/^[\s\xa0]+|[\s\xa0]+$/g, '');
+    if(cleaned.length !== 64) {
+      this.setState({if_correct_text: "invalid input"});
+      this.state.correct_input = false;
+      return this.state.correct_input;
+    }
+    let reg_expr = /^[A-Z0-9]+$/i;
+    if (!reg_expr.test(cleaned)) {
+      this.state.correct_input = false;
+      return this.state.correct_input;    
+    }
+    this.state.correct_input = true;
+    return this.state.correct_input;    
+  }
+
   onButtonSubmit = () => {
+    this.setState({submitted: true});
     fetch(`https://api.blockcypher.com/v1/btc/main/txs/${this.state.input}`)
-      // .then(resp => this.displayData(resp.json()))
       .then(resp => resp.json())
       .then(data => this.displayData(data))
-      this.setState({searched: true})
+    this.checkAddress(this.state.input);
+    if(this.state.correct_input===true) {
+      this.setState({if_correct_text: "valid input"});  
+    }
   }
 
   render() {
-    if(this.state.input === '' || this.state.searched === false ) {
+    let content
+    if (this.state.submitted===true && this.state.correct_input===true) {
+      content = (
+        <Table data={this.state.data} />
+      )
+    } else if (this.state.submitted===true && this.state.correct_input===false) {
+      content = (
+        <p className='red'>Invalid input</p>
+      )
+    }
+    if(this.state.input==='') {
       return (
         <div className="App">
             <h1 className='avenir mid-gray'>Bitcoin Info</h1>
@@ -40,7 +71,7 @@ class App extends Component {
               onButtonSubmit={this.onButtonSubmit}
             />
         </div>
-      );
+      );      
     } else {
       return (
         <div className="App">
@@ -49,9 +80,9 @@ class App extends Component {
               onInputChange={this.onInputChange}
               onButtonSubmit={this.onButtonSubmit}
             />
-            <Table data={this.state.data} />  
+            {content}
         </div>
-    );
+      );      
     }
   }
 }
