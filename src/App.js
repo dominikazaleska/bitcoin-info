@@ -26,15 +26,15 @@ class App extends Component {
     let string = String(input) || '';
     let cleaned = string.replace(/^[\s\xa0]+|[\s\xa0]+$/g, '');
     if(cleaned.length !== 64) {
-      this.state.correct_input = false;
+      this.setState({correct_input: false});
       return this.state.correct_input;
     }
     let reg_expr = /^[A-Z0-9]+$/i;
     if (!reg_expr.test(cleaned)) {
-      this.state.correct_input = false;
+      this.setState({correct_input: false});
       return this.state.correct_input;    
     }
-    this.state.correct_input = true;
+    this.setState({correct_input: true});
     return this.state.correct_input;    
   }
 
