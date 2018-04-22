@@ -63,7 +63,7 @@ class App extends Component {
     if(this.state.input==='') {
       return (
         <div className="App">
-            <h1 className='avenir mid-gray'>Bitcoin Info</h1>
+            <h1 className='avenir mid-gray'>Bitcoin Transaction Info</h1>
             <h2 className='avenir mid-gray'>Check your transaction's data</h2>
             <SearchBox 
               onInputChange={this.onInputChange}

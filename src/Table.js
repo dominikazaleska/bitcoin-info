@@ -14,7 +14,7 @@ const Table = ({ data }) => {
 	return (
 		<div className='pa4'>
       <div className='overflow-auto'>
-			  <table className='f4 w-100 mw8 center'>
+			  <table className='f5 w-100 mw8 center'>
           <tbody className='1h-copy pa4'>
             <tr>
               <td className='pv3 pl3 pr3 b--black-10 b--dashed bw1 mw4 truncate'>Block index</td>
