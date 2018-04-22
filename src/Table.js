@@ -12,11 +12,10 @@ const Table = ({ data }) => {
   }
 
   let inputs = data.inputs;
-  console.log(inputs);
   let inputItems = [];
   if(inputs) {
     inputItems = inputs.map((input) => (
-        <table key={input.toString()} className='f5 w-100 mw8 center'>
+        <table key={JSON.stringify(input)} className='f5 w-100 mw8 center'>
           <tbody className='1h-copy pa4'>
             <tr>
               <td className='pv3 pl3 pr3 b--black-10 b--dashed bw1 mw4 truncate dark-blue' colSpan='2'>Input</td>
@@ -59,11 +58,10 @@ const Table = ({ data }) => {
   }
 
   let outputs = data.outputs;
-  console.log(outputs);
   let outputItems = [];
   if(outputs) {
     outputItems = outputs.map((output) => (
-        <table key={output.toString()} className='f5 w-100 mw8 center'>
+        <table key={JSON.stringify(output)} className='f5 w-100 mw8 center'>
           <tbody className='1h-copy pa4'>
             <tr>
               <td className='pv3 pl3 pr3 b--black-10 b--dashed bw1 mw4 truncate dark-blue' colSpan='2'>Output</td>
@@ -94,8 +92,8 @@ const Table = ({ data }) => {
   }
 
 	return (
-		<div className='pa4'>
-      <div className='overflow-auto'>
+		<div key='main-table-div' className='pa4'>
+      <div key='side-table-div' className='overflow-auto'>
 			  <table key='main-table' className='f5 w-100 mw8 center'>
           <tbody className='1h-copy pa4'>
             <tr>

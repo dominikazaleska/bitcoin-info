@@ -53,7 +53,7 @@ class App extends Component {
     let content;
     if (this.state.submitted===true && this.state.correct_input===true) {
       content = (
-        <Table data={this.state.data} />
+        <Table key='main-table-component' data={this.state.data} />
       )
     } else if (this.state.submitted===true && this.state.correct_input===false) {
       content = (
@@ -62,7 +62,7 @@ class App extends Component {
     }
     if(this.state.input==='') {
       return (
-        <div className="App">
+        <div key='app-div' className="App">
             <h1 className='avenir mid-gray'>Bitcoin Transaction Info</h1>
             <h2 className='avenir mid-gray'>Check your transaction's data</h2>
             <SearchBox 
@@ -73,7 +73,7 @@ class App extends Component {
       );      
     } else {
       return (
-        <div className="App">
+        <div key='app-div' className="App">
             <h1 className='avenir mid-gray'>Bitcoin Info</h1>
             <h2 className='avenir mid-gray'>Check your transaction's data</h2>
             <SearchBox 
