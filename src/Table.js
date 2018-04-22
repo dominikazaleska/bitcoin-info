@@ -2,14 +2,96 @@ import React from 'react';
 import './Table.css';
 
 const Table = ({ data }) => {
-	let numbers = data.addresses;
 
-	let listItems = [];
-	if(numbers) {
-		listItems = numbers.map((number) => (
-  			<li key={number.toString()} className='to-ell mw6 truncate'>{number}</li>
-  		));		
-	}
+  const Addresses = (addressesArray) => {
+    if(addressesArray) {
+      return addressesArray.map((address) => (
+        <li key={address.toString()} className='to-ell mw6 truncate'>{address}</li>        
+      ));
+    }
+  }
+
+  let inputs = data.inputs;
+  console.log(inputs);
+  let inputItems = [];
+  if(inputs) {
+    inputItems = inputs.map((input) => (
+        <table key={input.toString()} className='f5 w-100 mw8 center'>
+          <tbody className='1h-copy pa4'>
+            <tr>
+              <td className='pv3 pl3 pr3 b--black-10 b--dashed bw1 mw4 truncate' colSpan='2'>Input</td>
+            </tr>
+            <tr>
+              <td className='pv3 pl3 pr3 b--black-10 b--dashed bw1 mw4 w-20 truncate'>Previous Hash</td>
+              <td className='pv3 pl3 pr3 b--black-10 b--dashed bw1 mw4 w-80 truncate'>{input.prev_hash}</td>
+            </tr>
+            <tr>
+              <td className='pv3 pl3 pr3 b--black-10 b--dashed bw1 mw4 w-20 truncate'>Output Index</td>
+              <td className='pv3 pl3 pr3 b--black-10 b--dashed bw1 mw4 w-80 truncate'>{input.output_index}</td>
+            </tr>
+            <tr>
+              <td className='pv3 pl3 pr3 b--black-10 b--dashed bw1 mw4 w-20 truncate'>Script</td>
+              <td className='pv3 pl3 pr3 b--black-10 b--dashed bw1 mw4 w-80 truncate'>{input.script}</td>
+            </tr>
+            <tr>
+              <td className='pv3 pl3 pr3 b--black-10 b--dashed bw1 mw4 w-20 truncate'>Output Value</td>
+              <td className='pv3 pl3 pr3 b--black-10 b--dashed bw1 mw4 w-80 truncate'>{input.output_value}</td>
+            </tr>
+            <tr>
+              <td className='pv3 pl3 pr3 b--black-10 b--dashed bw1 mw4 w-20 truncate'>Sequence</td>
+              <td className='pv3 pl3 pr3 b--black-10 b--dashed bw1 mw4 w-80 truncate'>{input.sequence}</td>
+            </tr>
+            <tr>
+              <td className='pv3 pl3 pr3 b--black-10 b--dashed bw1 mw4 w-20 truncate'>Script Type</td>
+              <td className='pv3 pl3 pr3 b--black-10 b--dashed bw1 mw4 w-80 truncate'>{input.script_type}</td>
+            </tr>
+            <tr>
+              <td className='pv3 pl3 pr3 b--black-10 b--dashed bw1 mw4 w-20 truncate'>Age</td>
+              <td className='pv3 pl3 pr3 b--black-10 b--dashed bw1 mw4 w-80 truncate'>{input.age}</td>
+            </tr>
+            <tr>
+              <td className='pv3 pl3 pr3 b--black-10 b--dashed bw1 mw4 w-20 truncate'>Addresses</td>
+              <td className='pv3 pl3 pr3 b--black-10 b--dashed bw1 mw4 w-80 truncate'><ul>{Addresses(input.addresses)}</ul></td>
+            </tr>
+          </tbody>
+        </table>
+      ));
+  }
+
+  let outputs = data.outputs;
+  console.log(outputs);
+  let outputItems = [];
+  if(outputs) {
+    outputItems = outputs.map((output) => (
+        <table key={output.toString()} className='f5 w-100 mw8 center'>
+          <tbody className='1h-copy pa4'>
+            <tr>
+              <td className='pv3 pl3 pr3 b--black-10 b--dashed bw1 mw4 truncate' colSpan='2'>Output</td>
+            </tr>
+            <tr>
+              <td className='pv3 pl3 pr3 b--black-10 b--dashed bw1 mw4 w-20 truncate'>Value</td>
+              <td className='pv3 pl3 pr3 b--black-10 b--dashed bw1 mw4 w-80 truncate'>{output.value}</td>
+            </tr>
+            <tr>
+              <td className='pv3 pl3 pr3 b--black-10 b--dashed bw1 mw4 w-20 truncate'>Script</td>
+              <td className='pv3 pl3 pr3 b--black-10 b--dashed bw1 mw4 w-80 truncate'>{output.script}</td>
+            </tr>
+            <tr>
+              <td className='pv3 pl3 pr3 b--black-10 b--dashed bw1 mw4 w-20 truncate'>Spent by</td>
+              <td className='pv3 pl3 pr3 b--black-10 b--dashed bw1 mw4 w-80 truncate'>{output.spent_by}</td>
+            </tr>
+            <tr>
+              <td className='pv3 pl3 pr3 b--black-10 b--dashed bw1 mw4 w-20 truncate'>Script type</td>
+              <td className='pv3 pl3 pr3 b--black-10 b--dashed bw1 mw4 w-80 truncate'>{output.script_type}</td>
+            </tr>
+            <tr>
+              <td className='pv3 pl3 pr3 b--black-10 b--dashed bw1 mw4 w-20 truncate'>Addresses</td>
+              <td className='pv3 pl3 pr3 b--black-10 b--dashed bw1 mw4 w-80 truncate'><ul>{Addresses(output.addresses)}</ul></td>
+            </tr>
+          </tbody>
+        </table>
+      ));
+  }
 
 	return (
 		<div className='pa4'>
@@ -35,7 +117,7 @@ const Table = ({ data }) => {
   				  <tr>
     				  <td className='pv3 pl3 pr3 b--black-10 b--dashed bw1 w-20 mw4 truncate'>Addresses</td>
     				  <td className='pv3 pl3 pr3 b--black-10 b--dashed bw1 w-80 mw4 truncate'>
-    					  <ul>{listItems}</ul>
+    					  <ul>{Addresses(data.addresses)}</ul>
     				  </td>
   				  </tr>
             <tr>
@@ -96,6 +178,22 @@ const Table = ({ data }) => {
   				  </tr>
           </tbody>
 			  </table>
+        <table className='f5 w-100 mw8 center'>
+          <tbody className='1h-copy pa4'>
+            <tr>
+              <td className='pv3 pl3 pr3 b b--black-10 b--dashed bw1 mw4 truncate' colSpan='2'>Inputs</td>
+            </tr>
+          </tbody>
+        </table>
+        {inputItems}
+        <table className='f5 w-100 mw8 center'>
+          <tbody className='1h-copy pa4'>
+            <tr>
+              <td className='pv3 pl3 pr3 b b--black-10 b--dashed bw1 mw4 truncate' colSpan='2'>Outputs</td>
+            </tr>
+          </tbody>
+        </table>
+        {outputItems}        
       </div>
 		</div>
 	);
